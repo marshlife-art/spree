@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/sunny2601/spree-promotion-roles-rule.git
+  revision: 4c3665fb6c6b301989e29ca09280345f88e92159
+  specs:
+    spree_promotion_roles_rule (0.1.2)
+      spree_core
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -402,6 +409,7 @@ DEPENDENCIES
   spree (~> 3.7.3)
   spree_auth_devise (~> 3.5)
   spree_gateway (~> 3.4)
+  spree_promotion_roles_rule!
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

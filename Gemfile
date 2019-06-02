@@ -11,6 +11,9 @@ gem 'spree', '~> 3.7.3'
 gem 'spree_auth_devise', '~> 3.5'
 gem 'spree_gateway', '~> 3.4'
 
+# spree modulez 
+gem 'spree_promotion_roles_rule', github: 'sunny2601/spree-promotion-roles-rule'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use pg as the database for Active Record

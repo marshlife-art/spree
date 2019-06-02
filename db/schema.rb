@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_02_193610) do
+ActiveRecord::Schema.define(version: 2019_06_02_210422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -51,6 +51,13 @@ ActiveRecord::Schema.define(version: 2019_06_02_193610) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
+  create_table "roles_promotion_rules", id: :serial, force: :cascade do |t|
+    t.integer "role_id"
+    t.integer "promotion_rule_id"
+    t.index ["promotion_rule_id"], name: "index_roles_promotion_rules_on_promotion_rule_id"
+    t.index ["role_id"], name: "index_roles_promotion_rules_on_role_id"
   end
 
   create_table "spree_addresses", id: :serial, force: :cascade do |t|
