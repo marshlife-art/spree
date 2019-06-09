@@ -13,6 +13,14 @@ GIT
     spree_promotion_roles_rule (0.1.2)
       spree_core
 
+GIT
+  remote: https://github.com/vinsol-spree-contrib/spree_one_page_stock_management.git
+  revision: fee1687915a41dce9e2e2039b3bd7ebc2f8a38f3
+  specs:
+    spree_one_page_stock_management (0.0.1.alpha)
+      spree_core (>= 3.1.0, < 4.0)
+      spree_extension
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -417,6 +425,7 @@ DEPENDENCIES
   spree (~> 3.7.3)
   spree_auth_devise (~> 3.5)
   spree_gateway (~> 3.4)
+  spree_one_page_stock_management!
   spree_promotion_roles_rule!
   spree_static_content!
   spring

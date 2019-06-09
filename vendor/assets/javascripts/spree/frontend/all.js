@@ -12,3 +12,4 @@
 //= require_tree .
 //= require spree/frontend/spree_auth
 //= require spree/frontend/spree_promotion_roles_rule
+//= require spree/frontend/spree_one_page_stock_management
