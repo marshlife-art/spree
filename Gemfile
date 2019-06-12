@@ -16,6 +16,8 @@ gem 'spree_promotion_roles_rule', github: 'sunny2601/spree-promotion-roles-rule'
 gem 'spree_static_content', github: 'spree-contrib/spree_static_content'
 gem 'spree_one_page_stock_management', github: 'vinsol-spree-contrib/spree_one_page_stock_management'
 
+gem 'spree_stockr', path: '../spree_stockr'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use pg as the database for Active Record

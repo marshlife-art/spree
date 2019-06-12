@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_09_191641) do
+ActiveRecord::Schema.define(version: 2019_06_11_225103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -755,6 +755,14 @@ ActiveRecord::Schema.define(version: 2019_06_09_191641) do
   create_table "spree_roles", id: :serial, force: :cascade do |t|
     t.string "name"
     t.index "lower((name)::text)", name: "index_spree_roles_on_lower_name", unique: true
+  end
+
+  create_table "spree_sheets", force: :cascade do |t|
+    t.string "name"
+    t.integer "rows"
+    t.integer "header_row"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "spree_shipments", id: :serial, force: :cascade do |t|
