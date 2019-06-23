@@ -10,4 +10,4 @@
 
 //= require_tree .
 //= require spree/backend/spree_promotion_roles_rule
-//= require spree/backend/spree_one_page_stock_management
+//= require spree/backend/spree_stockr
