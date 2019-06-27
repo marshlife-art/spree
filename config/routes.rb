@@ -9,4 +9,16 @@ Rails.application.routes.draw do
   # the default of "spree".
   mount Spree::Core::Engine, at: '/'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  if Rails.env.development?
+    require 'resque/server'
+    mount Resque::Server, at: '/jobs'
+
+    #or if you would like to protect this with Devise
+    # devise_for :users
+    # authenticate :user do
+    #   mount Resque::Server, at: '/jobs'
+    # end
+  end
+
 end
