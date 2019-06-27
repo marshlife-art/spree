@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_11_225103) do
+ActiveRecord::Schema.define(version: 2019_06_25_230139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -516,10 +516,12 @@ ActiveRecord::Schema.define(version: 2019_06_11_225103) do
     t.string "meta_title"
     t.datetime "discontinue_on"
     t.integer "store_id"
+    t.integer "sheet_id"
     t.index ["available_on"], name: "index_spree_products_on_available_on"
     t.index ["deleted_at"], name: "index_spree_products_on_deleted_at"
     t.index ["discontinue_on"], name: "index_spree_products_on_discontinue_on"
     t.index ["name"], name: "index_spree_products_on_name"
+    t.index ["sheet_id"], name: "index_spree_products_on_sheet_id"
     t.index ["shipping_category_id"], name: "index_spree_products_on_shipping_category_id"
     t.index ["slug"], name: "index_spree_products_on_slug", unique: true
     t.index ["store_id"], name: "index_spree_products_on_store_id"
@@ -758,9 +760,12 @@ ActiveRecord::Schema.define(version: 2019_06_11_225103) do
   end
 
   create_table "spree_sheets", force: :cascade do |t|
+    t.integer "status"
     t.string "name"
     t.integer "rows"
     t.integer "header_row"
+    t.integer "group_column"
+    t.json "data", default: {}, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
