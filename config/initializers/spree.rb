@@ -10,7 +10,6 @@
 # In order to initialize a setting do:
 # config.setting_name = 'new value'
 Spree.config do |config|
-  # Example:
   # Uncomment to stop tracking inventory levels in the application
   # config.track_inventory_levels = false
   config.products_per_page = 100
@@ -35,4 +34,7 @@ end
 
 Spree.user_class = "Spree::User"
 
-Rails.application.config.spree.promotions.rules << RolesPromotionRule
+Spree::Core::Engine.config.after_initialize do
+  Rails.application.config.spree.promotions.rules << RolesPromotionRule
+  Rails.application.config.spree.calculators.promotion_actions_create_item_adjustments << Spree::Calculator::CostPriceCalculator
+end
