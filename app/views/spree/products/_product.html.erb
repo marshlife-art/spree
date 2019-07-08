@@ -1,22 +1,37 @@
 <% url = spree.product_path(product, taxon_id: taxon.try(:id)) %>
-<div id="product_<%= product.id %>" class="col-md-3 col-sm-6 col-xs-6 product-list-item" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product">
-  <div class="panel panel-default">
-    <% cache(taxon.present? ? [I18n.locale, current_currency, taxon, product] : cache_key_for_product(product)) do %>
-      <div class="panel-body text-center product-body">
-        <%= link_to url, itemprop: "url" do %>
-          <%= small_image(product, itemprop: "image") %><br/>
-          <%= content_tag(:span, truncate(product.name, length: 50), class: 'info', itemprop: "name", title: product.name) %>
-        <% end %>
-        <br/>
-      </div>
-      <div class="panel-footer text-center">
-        <span itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-          <span class="price selling lead" itemprop="price" content="<%= (product.price_in(current_currency).amount.nil?)? 0 : product.price_in(current_currency).amount.to_d %>">
-            <%= display_price(product) %>
-          </span>
-          <span itemprop="priceCurrency" content="<%= current_currency %>"></span>
-        </span>
-      </div>
+<div id="product_<%= product.id %>" class="list-group-item product-list-group-item" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product">
+  <% cache(taxon.present? ? [I18n.locale, current_currency, taxon, product] : cache_key_for_product(product)) do %>
+    <%= link_to url, itemprop: "url", class: "product-name" do %>
+      <%# small_image(product, itemprop: "image") %>
+      <%= content_tag(:span, truncate(product.name, length: 250), class: 'info', itemprop: "name", title: product.name) %>
     <% end %>
-  </div>
+    <span class="product-properties">
+      <% unless product.property('Size').blank? %>
+      <span class="label label-info" title="Size">
+        <%= product.property('Size') %>
+      </span>
+        &nbsp;
+      <% end %>
+      <% unless product.property('PK').blank? %>
+      <span class="label label-info" title="PK">
+        <%= product.property('PK') %>
+      </span>
+      &nbsp;
+      <% end %>
+      <% unless product.property('Unit Type').blank? %>
+      <span class="label label-info" title="Unit Type">
+        <%= product.property('Unit Type') %>
+      </span>
+        &nbsp;
+      <% end %>
+    </span>
+
+    <span itemprop="offers" itemscope itemtype="https://schema.org/Offer" class="ajax-add-to-cart-insert-after">
+      <span class="price selling lead" itemprop="price" content="<%= (product.price_in(current_currency).amount.nil?)? 0 : product.price_in(current_currency).amount.to_d %>">
+        <%= display_price(product) %>
+      </span>
+      <span itemprop="priceCurrency" content="<%= current_currency %>"></span>
+    </span>
+
+  <% end %>
 </div>

@@ -13,6 +13,12 @@ Spree.config do |config|
   # Example:
   # Uncomment to stop tracking inventory levels in the application
   # config.track_inventory_levels = false
+  config.products_per_page = 100
+  config.show_variant_full_price = true
+  config.max_level_in_taxons_menu = 5
+  config.shipping_instructions = true
+  #config.logo
+  #config.admin_interface_logo
 end
 
 # Configure Spree Dependencies

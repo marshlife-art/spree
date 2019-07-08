@@ -14,6 +14,13 @@ GIT
       spree_core
 
 PATH
+  remote: ../spree_add_to_cart_ajax
+  specs:
+    spree_add_to_cart_ajax (0.1.2)
+      jquery-form-rails
+      spree_core (~> 3.7.3)
+
+PATH
   remote: ../spree_stockr
   specs:
     spree_stockr (0.0.1.alpha)
@@ -162,6 +169,8 @@ GEM
     io-like (0.3.0)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
+    jquery-form-rails (1.0.1)
+      jquery-rails
     jquery-rails (4.3.3)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -454,6 +463,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   selenium-webdriver
   spree (~> 3.7.3)
+  spree_add_to_cart_ajax!
   spree_auth_devise (~> 3.5)
   spree_gateway (~> 3.4)
   spree_promotion_roles_rule!

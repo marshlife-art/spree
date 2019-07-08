@@ -11,3 +11,4 @@
 //= require_tree .
 //= require spree/backend/spree_promotion_roles_rule
 //= require spree/backend/spree_stockr
+//= require spree/backend/spree_add_to_cart_ajax

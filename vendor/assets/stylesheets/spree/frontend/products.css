@@ -1,0 +1,15 @@
+.product-list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.1s linear 0.1s;
+}
+.product-list-group-item:hover {
+  background-color: #f7f7f7;
+}
+.product-name {
+  flex-grow: 1;
+}
+.product-properties{
+  margin-right: 1em;
+}
