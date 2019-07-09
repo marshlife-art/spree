@@ -11,5 +11,4 @@
 
 //= require_tree .
 //= require spree/frontend/spree_auth
-//= require spree/frontend/spree_promotion_roles_rule
 //= require spree/frontend/spree_add_to_cart_ajax

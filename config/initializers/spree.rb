@@ -35,6 +35,6 @@ end
 Spree.user_class = "Spree::User"
 
 Spree::Core::Engine.config.after_initialize do
-  Rails.application.config.spree.promotions.rules << RolesPromotionRule
+  # Rails.application.config.spree.promotions.rules << RolesPromotionRule
   Rails.application.config.spree.calculators.promotion_actions_create_item_adjustments << Spree::Calculator::CostPriceCalculator
 end

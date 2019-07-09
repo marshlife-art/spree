@@ -12,7 +12,7 @@ gem 'spree_auth_devise', '~> 3.5'
 gem 'spree_gateway', '~> 3.4'
 
 # spree modulez 
-gem 'spree_promotion_roles_rule', github: 'sunny2601/spree-promotion-roles-rule'
+# gem 'spree_promotion_roles_rule', github: 'sunny2601/spree-promotion-roles-rule'
 gem 'spree_static_content', github: 'spree-contrib/spree_static_content'
 gem 'spree_add_to_cart_ajax', path: '../spree_add_to_cart_ajax'
 
