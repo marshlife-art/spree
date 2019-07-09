@@ -1,0 +1,102 @@
+<% content_for :page_title do %>
+  <%= link_to Spree.t(:reports), spree.admin_reports_url %> /
+  Item Report
+<% end %>
+
+<div class="card bg-light mb-3">
+  <div class="card-body">
+    <%= search_form_for @search, url: spree.item_report_admin_reports_path  do |s| %>
+      <div class="form-group date-range-filter">
+        <%= label_tag nil, Spree.t(:date_range) %>
+        <div class="date-range-filter row">
+          <div class="col-md-6">
+            <%= s.text_field :completed_at_gt, class: 'datepicker datepicker-from form-control', value: datepicker_field_value(params[:q][:completed_at_gt]), placeholder: 'Start Date' %>
+          </div>
+          <div class="col-md-6">
+            <%= s.text_field :completed_at_lt, class: 'datepicker datepicker-to form-control', value: datepicker_field_value(params[:q][:completed_at_lt]), placeholder: 'End Date' %>
+          </div>
+        </div>
+        <div class="payment-state-filter row">
+          <div class="col-md-6">
+            <% payment_states = [
+                [''       , ''                ],
+                ['Paid'       , 'paid'        ],
+                ['Balance Due', 'balance_due' ],
+                ['Credit Owed', 'credit_owed' ],
+                ['Failed'     , 'failed'      ],
+                ['Void'       , 'void'        ]
+              ] %>
+            <%= s.field_container :payment_state_eq, class: ['form-group'] do %>
+              <%= s.label :payment_state_eq, Spree.t(:payment_state) %>
+              <%= s.select(:payment_state_eq, options_for_select(payment_states, params[:q][:payment_state_eq]), {}, { class: 'select2' }) %>
+            <% end %>
+          </div>
+
+
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <%= button Spree.t(:search), 'search' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<table class="table table-bordered admin-report" data-hook="item_report">
+  <thead>
+    <tr>
+      <th>Qty</td>
+      <th>SKU</th>
+      <th>UNF</th>
+      <th>Name</th>
+      <th>Size</th>
+      <th>PK</th>
+      <th>Unit Type</th>
+      <th>Price</th>
+      <th>Cost Price</td>
+      <th>Line Item Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <% order.line_items.each do |li| %>
+        <tr>
+          <td>
+            <%= li.quantity %>
+          </td>
+          <td>
+            <%= li.product.sku %>
+          </td>
+          <td>
+            <%= li.product.property('UNF') unless li.product.property('UNF').blank? %>
+          </td>
+          <td>
+            <%= link_to spree.edit_admin_product_path(li.product), itemprop: "url", class: "product-name" do %>
+              <%# small_image(li.product, itemprop: "image") %>
+              <%= content_tag(:span, truncate(li.product.name, length: 250), class: 'info', itemprop: "name", title: li.product.name) %>
+            <% end %>
+          </td>
+          <td>
+            <%= li.product.property('Size') unless li.product.property('Size').blank? %>
+          </td>
+          <td>
+            <%= li.product.property('PK') unless li.product.property('PK').blank? %>
+          </td>
+          <td>
+            <%= li.product.property('Unit Type') unless li.product.property('Unit Type').blank? %>
+          </td>
+          <td>
+            <%= li.product.price_in(current_currency).amount.to_money %> <%= current_currency %>
+          </td>
+          <td>
+            <%= li.product.cost_price.to_money %>
+          </td>
+          <td>
+            <%= li.total.to_money %>
+          </td>
+        </tr>
+      <% end %>
+    <% end unless @orders.blank? %>
+  </tbody>
+</table>

@@ -22,3 +22,16 @@ Rails.application.routes.draw do
   end
 
 end
+
+Spree::Core::Engine.routes.prepend do
+  namespace :admin do
+
+    resources :reports, only: [:index] do
+      collection do
+        get   :item_report
+        post  :item_report
+      end
+    end
+
+  end
+end
