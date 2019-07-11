@@ -1,0 +1,53 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:taxons) %> (<%= @taxons.count %>)
+<% end %>
+
+<p>A list of all Taxons and their associated root Taxonomy. If there are no products associated with a taxon it can be converted to a root Taxonomy.</p>
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Products</th>
+      <th>
+        
+      </th>
+      <th>
+        <%# link_to spree_admin_taxons_update_taxons_path, remote: true, method: :get, class: 'btn btn-sm btn-default' do %>
+          <!--<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Thing -->
+        <%# end %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @taxons.each do |taxon| %>
+    <tr>
+      <td></td>
+      <td><%= taxon.name %></td>
+      <td>
+        <% product_count = taxon.products.length %>
+        <% if product_count == 0 %>
+          <span class="badge"><%= product_count %></span>
+        <% else %>
+          <%= product_count %>
+        <% end %>
+        
+      </td>
+      <td>
+        <%= link_to taxon.permalink, spree.nested_taxons_url(taxon) %>
+        <!-- <select><option>Root Taxonomy</option></select> -->
+      </td>
+      <td>
+        <% unless taxon.products.length > 0 %>
+          <!--button>Convert To Taxonomy</button -->
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+
+</table>
+<%= paginate @taxons %>

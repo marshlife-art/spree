@@ -33,5 +33,11 @@ Spree::Core::Engine.routes.prepend do
       end
     end
 
+    resources :taxons, only: [:index] do
+      collection do
+        post :update_taxons
+      end
+    end
+
   end
 end
