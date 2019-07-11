@@ -15,7 +15,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: marsh_devel2
+  database: marsh_devel3
   pool: 5
   username: postgres
   password:
